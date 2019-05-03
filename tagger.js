@@ -103,6 +103,7 @@
             var wrapper = document.createElement('div');
             wrapper.className = 'tagger';
             this._input.setAttribute('hidden', 'hidden');
+            this._input.setAttribute('type', 'hidden');
             var self = this;
             this._ul.addEventListener('click', function(event) {
                 if (event.target.className.match(/close/)) {
