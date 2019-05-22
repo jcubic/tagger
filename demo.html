@@ -1,0 +1,25 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Tagger Example</title>
+<link href="tagger.css" rel="stylesheet">
+</head>
+<body>
+  <h1>Tagger Example</h1>
+  <input type="text" value="charles,louis,michel" name="tags" />
+<script src="tagger.js"></script>
+<script>
+  tagger(
+    document.querySelector('[name="tags"]'), 
+    {
+      allow_duplicates: false,
+      allow_spaces: true
+    }
+  );
+</script>
+</body>
+</html>

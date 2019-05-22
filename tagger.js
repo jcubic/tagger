@@ -3,7 +3,7 @@
  * |_   _|___ ___ ___ ___ ___
  *   | | | .'| . | . | -_|  _|
  *   |_| |__,|_  |_  |___|_|
- *           |___|___|   version 0.1.0
+ *           |___|___|   version 0.1.1
  *
  * Tagger - Vanilla JavaScript Tag Editor
  *
@@ -137,18 +137,32 @@
             wrapper.appendChild(input);
             wrapper.appendChild(this._ul);
         },
+        complete: function(value) {
+            if (this._settings.completion) {
+                var list = this._settings.completion.list;
+                list = list.filter(function(tag) {
+                    return tag.startWith(value);
+                });
+                if (list.length) {
+                    
+                }
+            }
+        },
         tags_from_input: function() {
             this._tags = this._input.value.split(/\s*,\s*/).filter(Boolean);
-            this._tags.forEach(this.add_tag.bind(this));
+            this._tags.forEach(this._new_tag.bind(this));
+        },
+        _new_tag: function(name) {
+            var close = ['a', {href: '#', 'class': 'close'}, ['\u00D7']];
+            var a_atts = {href: '/tag/' + name, target: '_black'};
+            var li = create('li', {}, [['a', a_atts, [['span', {}, [name]], close]]]);
+            this._ul.insertBefore(li, this._new_tag.parentNode);
         },
         add_tag: function(name) {
             if (!this._settings.allow_duplicates && this._tags.indexOf(name) !== -1) {
                 return false;
             }
-            var close = ['a', {href: '#', 'class': 'close'}, ['\u00D7']];
-            var a_atts = {href: '/tag/' + name, target: '_black'};
-            var li = create('li', {}, [['a', a_atts, [['span', {}, [name]], close]]]);
-            this._ul.insertBefore(li, this._new_tag.parentNode);
+            this._new_tag(name)
             this._tags.push(name);
             this._input.value = this._tags.join(', ');
             return true;

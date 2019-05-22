@@ -1,0 +1,26 @@
+{
+  "name": "@jcubic/tagger",
+  "version": "0.1.1",
+  "description": "Vanilla JavaScript tag editor",
+  "main": "tagger.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcubic/tagger.git"
+  },
+  "keywords": [
+    "tag",
+    "editor",
+    "inline",
+    "component",
+    "widget",
+    "ui"
+  ],
+  "author": "Jakub T. Jankiewicz <jcubic@onet.pl> (https://jcubic.pl/jakub-jankiewicz/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jcubic/tagger/issues"
+  },
+  "homepage": "https://github.com/jcubic/tagger#readme"
+}
