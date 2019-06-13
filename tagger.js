@@ -3,7 +3,7 @@
  * |_   _|___ ___ ___ ___ ___
  *   | | | .'| . | . | -_|  _|
  *   |_| |__,|_  |_  |___|_|
- *           |___|___|   version 0.1.1
+ *           |___|___|   version 0.1.2
  *
  * Tagger - Vanilla JavaScript Tag Editor
  *
@@ -111,19 +111,19 @@
                     event.preventDefault();
                 }
             });
-            this.tags_from_input();
             var li = document.createElement('li');
             li.className = 'tagger-new';
-            this._new_tag = document.createElement('input');
-            li.appendChild(this._new_tag);
-            this._new_tag.addEventListener('keydown', function(event) {
+            this._new_input_tag = document.createElement('input');
+            this.tags_from_input();
+            li.appendChild(this._new_input_tag);
+            this._new_input_tag.addEventListener('keydown', function(event) {
                 if (event.keyCode === 13 || event.keyCode === 188 ||
                     (event.keyCode === 32 && !self._settings.allow_spaces)) { // enter || comma || space
-                    if (self.add_tag(self._new_tag.value.trim())) {
-                        self._new_tag.value = '';
+                    if (self.add_tag(self._new_input_tag.value.trim())) {
+                        self._new_input_tag.value = '';
                     }
                     event.preventDefault();
-                } else if (event.keyCode === 8 && !self._new_tag.value) { // backspace
+                } else if (event.keyCode === 8 && !self._new_input_tag.value) { // backspace
                     if (self._tags.length > 0) {
                         var li = self._ul.querySelector('li:nth-last-child(2)');
                         self._ul.removeChild(li);
@@ -156,7 +156,7 @@
             var close = ['a', {href: '#', 'class': 'close'}, ['\u00D7']];
             var a_atts = {href: '/tag/' + name, target: '_black'};
             var li = create('li', {}, [['a', a_atts, [['span', {}, [name]], close]]]);
-            this._ul.insertBefore(li, this._new_tag.parentNode);
+            this._ul.insertBefore(li, this._new_input_tag.parentNode);
         },
         add_tag: function(name) {
             if (!this._settings.allow_duplicates && this._tags.indexOf(name) !== -1) {

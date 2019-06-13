@@ -3,11 +3,11 @@
  |_   _|___ ___ ___ ___ ___
    | | | .'| . | . | -_|  _|
    |_| |__,|_  |_  |___|_|
-           |___|___|   version 0.1.1
+           |___|___|   version 0.1.2
 ```
 ## Tagger - Vanilla JavaScript Tag Editor
 
-[![npm](https://img.shields.io/badge/npm-0.1.1-blue.svg)](https://www.npmjs.com/package/@jcubic/tagger)
+[![npm](https://img.shields.io/badge/npm-0.1.2-blue.svg)](https://www.npmjs.com/package/@jcubic/tagger)
 
 Usage:
 
