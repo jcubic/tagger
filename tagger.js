@@ -3,7 +3,7 @@
  * |_   _|___ ___ ___ ___ ___
  *   | | | .'| . | . | -_|  _|
  *   |_| |__,|_  |_  |___|_|
- *           |___|___|   version 0.1.2
+ *           |___|___|   version 0.1.3
  *
  * Tagger - Vanilla JavaScript Tag Editor
  *
