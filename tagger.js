@@ -3,7 +3,7 @@
  * |_   _|___ ___ ___ ___ ___
  *   | | | .'| . | . | -_|  _|
  *   |_| |__,|_  |_  |___|_|
- *           |___|___|   version 0.1.3
+ *           |___|___|   version 0.2.0
  *
  * Tagger - Vanilla JavaScript Tag Editor
  *
@@ -90,6 +90,9 @@
             list: [],
             delay: 400,
             min_length: 2
+        },
+        link: function(name) {
+            return '/tag/' + name;
         }
     };
     // ------------------------------------------------------------------------------------------
@@ -152,8 +155,14 @@
         },
         _new_tag: function(name) {
             var close = ['a', {href: '#', 'class': 'close'}, ['\u00D7']];
-            var a_atts = {href: '/tag/' + name, target: '_black'};
-            var li = create('li', {}, [['a', a_atts, [['span', {}, [name]], close]]]);
+            var href = this._settings.link(name);
+            var li;
+            if (href === false) {
+                li = create('li', {}, [['span', {}, [['span', {}, [name]], close]]]);
+            } else {
+                var a_atts = {href: href, target: '_black'};
+                li = create('li', {}, [['a', a_atts, [['span', {}, [name]], close]]]);
+            }
             this._ul.insertBefore(li, this._new_input_tag.parentNode);
         },
         add_tag: function(name) {
