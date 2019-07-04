@@ -21,6 +21,14 @@
     }
 })(typeof window !== 'undefined' ? window : global, function(undefined) {
     // ------------------------------------------------------------------------------------------
+    var get_text = (function() {
+        var div = document.createElement('div');
+        var text = ('innerText' in div) ? 'innerText' : 'textContent';
+        return function(element) {
+            return element[text];
+        };
+    })();
+    // ------------------------------------------------------------------------------------------
     function tagger(input, options) {
         if (!(this instanceof tagger)) {
             return new tagger(input, options);
@@ -98,6 +106,7 @@
     // ------------------------------------------------------------------------------------------
     tagger.fn = tagger.prototype = {
         init: function(input, settings) {
+            var self = this;
             this._settings = settings;
             this._ul = document.createElement('ul');
             this._input = input;
@@ -105,6 +114,22 @@
             wrapper.className = 'tagger';
             this._input.setAttribute('hidden', 'hidden');
             this._input.setAttribute('type', 'hidden');
+            var li = document.createElement('li');
+            li.className = 'tagger-new';
+            this._new_input_tag = document.createElement('input');
+            this.tags_from_input();
+            li.appendChild(this._new_input_tag);
+            this._completion = document.createElement('div');
+            this._completion.className = 'tagger-completion';
+            this._ul.appendChild(li);
+            input.parentNode.replaceChild(wrapper, input);
+            wrapper.appendChild(input);
+            wrapper.appendChild(this._ul);
+            li.appendChild(this._completion);
+            this._add_events();
+        },
+        // --------------------------------------------------------------------------------------
+        _add_events: function() {
             var self = this;
             this._ul.addEventListener('click', function(event) {
                 if (event.target.className.match(/close/)) {
@@ -112,11 +137,6 @@
                     event.preventDefault();
                 }
             });
-            var li = document.createElement('li');
-            li.className = 'tagger-new';
-            this._new_input_tag = document.createElement('input');
-            this.tags_from_input();
-            li.appendChild(this._new_input_tag);
             this._new_input_tag.addEventListener('keydown', function(event) {
                 if (event.keyCode === 13 || event.keyCode === 188 ||
                     (event.keyCode === 32 && !self._settings.allow_spaces)) { // enter || comma || space
@@ -131,28 +151,41 @@
                         self._tags.pop();
                     }
                     event.preventDefault();
+                } else if (event.keyCode === 9) {
+                    self.complete(self._new_input_tag.value);
+                    event.preventDefault();
                 }
             });
-            this._ul.appendChild(li);
-            input.parentNode.replaceChild(wrapper, input);
-            wrapper.appendChild(input);
-            wrapper.appendChild(this._ul);
+            this._completion.addEventListener('click', function(event) {
+                if (event.target.tagName.toLowerCase() === 'a') {
+                    self.add_tag(get_text(event.target));
+                    self._new_input_tag.value = '';
+                    self._completion.innerHTML = '';
+                }
+            });
         },
+        // --------------------------------------------------------------------------------------
         complete: function(value) {
             if (this._settings.completion) {
                 var list = this._settings.completion.list;
                 list = list.filter(function(tag) {
-                    return tag.startWith(value);
+                    return tag.startsWith(value);
                 });
+                this._completion.innerHTML = '';
                 if (list.length) {
-                    
+                    var ul = create('ul', {}, list.map(function(tag) {
+                        return ['li', {}, [['a', {href: '#'}, [tag]]]];
+                    }));
+                    this._completion.appendChild(ul);
                 }
             }
         },
+        // --------------------------------------------------------------------------------------
         tags_from_input: function() {
             this._tags = this._input.value.split(/\s*,\s*/).filter(Boolean);
             this._tags.forEach(this._new_tag.bind(this));
         },
+        // --------------------------------------------------------------------------------------
         _new_tag: function(name) {
             var close = ['a', {href: '#', 'class': 'close'}, ['\u00D7']];
             var href = this._settings.link(name);
@@ -165,6 +198,7 @@
             }
             this._ul.insertBefore(li, this._new_input_tag.parentNode);
         },
+        // --------------------------------------------------------------------------------------
         add_tag: function(name) {
             if (!this._settings.allow_duplicates && this._tags.indexOf(name) !== -1) {
                 return false;
@@ -174,6 +208,7 @@
             this._input.value = this._tags.join(', ');
             return true;
         },
+        // --------------------------------------------------------------------------------------
         remove_tag: function(close) {
             var li = close.closest('li');
             var name = li.querySelector('span').innerText;

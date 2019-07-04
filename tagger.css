@@ -17,9 +17,7 @@
   /* fix for bootsrap */
   display: none;
 }
-.tagger ul {
-    list-style: none;
-    margin: 0;
+.tagger > ul {
     display: flex;
     width: 100%;
     align-items: center;
@@ -28,13 +26,22 @@
     box-sizing: border-box;
     height: 38px;
 }
-.tagger li:not(.tagger-new) + li {
+.tagger ul {
+    margin: 0;
+    list-style: none;
+}
+.tagger > ul > li:not(.tagger-new) + li {
    padding-left: 10px;
 }
-.tagger li:not(.tagger-new) a {
+.tagger > ul > li:not(.tagger-new) a,
+.tagger > ul > li:not(.tagger-new) a:visited,
+.tagger-new ul a,
+.tagger-new ul a:visited {
     color: black;
 }
-.tagger li:not(.tagger-new) > a, .tagger li:not(.tagger-new) > span {
+.tagger > ul > li:not(.tagger-new) > a,
+.tagger li:not(.tagger-new) > span,
+.tagger .tagger-new ul {
     padding: 4px 4px 4px 8px;
     background: #B1C3D7;
     border: 1px solid #4181ed;
@@ -66,4 +73,12 @@
 }
 .tagger .tagger-new {
     flex-grow: 1;
+    position: relative;
+}
+.tagger .tagger-new ul {
+    padding: 5px;
+}
+.tagger .tagger-completion {
+    position: absolute;
+    z-index: 100;
 }

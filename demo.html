@@ -21,7 +21,8 @@
 <script>
   var t1 = tagger(document.querySelector('[name="tags"]'), {
     allow_duplicates: false,
-    allow_spaces: true
+    allow_spaces: true,
+    completion: {list: ['foo', 'bar', 'baz']}
   });
   var t2 = tagger(document.querySelector('[name="tags2"]'), {
     allow_duplicates: false,

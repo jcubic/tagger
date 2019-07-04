@@ -33,7 +33,7 @@ tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 
 
 ## Changelog
-* 0.2.0 - link option
+* 0.2.0 - link option, working completion
 * 0.1.3 - fix inialization in UMD
 * 0.1.2 - fix bug in adding tags
 * 0.1.1 - fix initalization of tags from input
