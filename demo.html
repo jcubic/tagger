@@ -27,6 +27,11 @@
   var t2 = tagger(document.querySelector('[name="tags2"]'), {
     allow_duplicates: false,
     allow_spaces: true,
+    completion: {
+      list: function() {
+        return Promise.resolve(['foo', 'bar', 'baz']);
+      }
+    },
     link: function() { return false; }
   });
   var t3 = tagger(document.querySelector('[name="tags3"]'), {

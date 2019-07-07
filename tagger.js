@@ -161,6 +161,7 @@
                     if (typeof self._settings.completion.list === 'function') {
                         self.complete(self._new_input_tag.value);
                     }
+                    self._toggle_completion(true);
                     event.preventDefault();
                 }
             });
@@ -173,8 +174,11 @@
                         self._new_input_tag.value = '';
                     }
                 } else {
+                    if (typeof self._settings.completion.list === 'function') {
+                        self.complete(value);
+                    }
                     var min = self._settings.completion.min_length;
-                    self._toggle_completion(self._new_input_tag.value.length >= min);
+                    self._toggle_completion(value.length >= min);
                 }
             });
             // ----------------------------------------------------------------------------------
@@ -214,10 +218,16 @@
         complete: function(value) {
             if (this._settings.completion) {
                 var list = this._settings.completion.list;
-                list = list.filter(function(tag) {
-                    return tag.startsWith(value);
-                });
-                this._build_completion(list);
+                if (typeof list === 'function') {
+                    var ret = list(value);
+                    if (ret && typeof ret.then === 'function') {
+                        ret.then(this._build_completion.bind(this));
+                    } else if (ret instanceof Array) {
+                        this._build_completion(ret);
+                    }
+                } else {
+                    this._build_completion(list);
+                }
             }
         },
         // --------------------------------------------------------------------------------------
