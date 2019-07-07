@@ -90,6 +90,7 @@
         }
         return tag;
     }
+    var id = 0;
     // ------------------------------------------------------------------------------------------
     tagger.defaults = {
         allow_duplicates: false,
@@ -106,6 +107,7 @@
     // ------------------------------------------------------------------------------------------
     tagger.fn = tagger.prototype = {
         init: function(input, settings) {
+            this._id = ++id;
             var self = this;
             this._settings = settings;
             this._ul = document.createElement('ul');
@@ -127,6 +129,9 @@
             wrapper.appendChild(this._ul);
             li.appendChild(this._completion);
             this._add_events();
+            if (this._settings.completion.list instanceof Array) {
+                this._build_completion(this._settings.completion.list);
+            }
         },
         // --------------------------------------------------------------------------------------
         _add_events: function() {
@@ -137,6 +142,7 @@
                     event.preventDefault();
                 }
             });
+            // ----------------------------------------------------------------------------------
             this._new_input_tag.addEventListener('keydown', function(event) {
                 if (event.keyCode === 13 || event.keyCode === 188 ||
                     (event.keyCode === 32 && !self._settings.allow_spaces)) { // enter || comma || space
@@ -151,11 +157,27 @@
                         self._tags.pop();
                     }
                     event.preventDefault();
-                } else if (event.keyCode === 9) {
-                    self.complete(self._new_input_tag.value);
+                } else if (event.keyCode === 32 && (event.ctrlKey || event.metaKey)) {
+                    if (typeof self._settings.completion.list === 'function') {
+                        self.complete(self._new_input_tag.value);
+                    }
                     event.preventDefault();
                 }
             });
+            // ----------------------------------------------------------------------------------
+            this._new_input_tag.addEventListener('input', function(event) {
+                var value = self._new_input_tag.value;
+                if (self._tag_selected(value)) {
+                    if (self.add_tag(value)) {
+                        self._toggle_completion(false);
+                        self._new_input_tag.value = '';
+                    }
+                } else {
+                    var min = self._settings.completion.min_length;
+                    self._toggle_completion(self._new_input_tag.value.length >= min);
+                }
+            });
+            // ----------------------------------------------------------------------------------
             this._completion.addEventListener('click', function(event) {
                 if (event.target.tagName.toLowerCase() === 'a') {
                     self.add_tag(get_text(event.target));
@@ -165,19 +187,37 @@
             });
         },
         // --------------------------------------------------------------------------------------
+        _tag_selected: function(tag) {
+            return this._last_completion && this._last_completion.includes(tag);
+        },
+        // --------------------------------------------------------------------------------------
+        _toggle_completion: function(toggle) {
+            if (toggle) {
+                this._new_input_tag.setAttribute('list', 'tagger-completion-' + this._id);
+            } else {
+                this._new_input_tag.removeAttribute('list');
+            }
+        },
+        // --------------------------------------------------------------------------------------
+        _build_completion: function(list) {
+            this._completion.innerHTML = '';
+            this._last_completion = list;
+            if (list.length) {
+                var id = 'tagger-completion-' + this._id;
+                var datalist = create('datalist', {id: id}, list.map(function(tag) {
+                    return ['option', {}, [tag]];
+                }));
+                this._completion.appendChild(datalist);
+            }
+        },
+        // --------------------------------------------------------------------------------------
         complete: function(value) {
             if (this._settings.completion) {
                 var list = this._settings.completion.list;
                 list = list.filter(function(tag) {
                     return tag.startsWith(value);
                 });
-                this._completion.innerHTML = '';
-                if (list.length) {
-                    var ul = create('ul', {}, list.map(function(tag) {
-                        return ['li', {}, [['a', {href: '#'}, [tag]]]];
-                    }));
-                    this._completion.appendChild(ul);
-                }
+                this._build_completion(list);
             }
         },
         // --------------------------------------------------------------------------------------
