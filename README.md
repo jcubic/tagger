@@ -28,16 +28,23 @@ tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 ### Options
 * allow_duplicates (default fasle)
 * allow_spaces (default true)
-* completion object `{list: string[], delay: miliseconds, min_length: number}`
+* completion object `{list: string[] | function(): Promise(array)|array, delay: miliseconds, min_length: number}`
 * link `function(name): string|false` it should return what should be in href attribute or false
 
 
 ## Changelog
-* 0.2.0 - link option, working completion
-* 0.1.3 - fix inialization in UMD
-* 0.1.2 - fix bug in adding tags
-* 0.1.1 - fix initalization of tags from input
-* 0.1.0 - inital version
+### 0.2.0
+* link option
+* working completion
+* allow to use querySelectorAll etc.
+### 0.1.3
+* fix inialization in UMD
+### 0.1.2
+* fix bug in adding tags
+### 0.1.1
+* fix initalization of tags from input
+### 0.1.0
+* inital version
 
 ## License
 

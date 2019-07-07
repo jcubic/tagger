@@ -30,6 +30,11 @@
     })();
     // ------------------------------------------------------------------------------------------
     function tagger(input, options) {
+        if (input.length) {
+            return Array.from(input).map(function(input) {
+                return new tagger(input, options);
+            });
+        }
         if (!(this instanceof tagger)) {
             return new tagger(input, options);
         }

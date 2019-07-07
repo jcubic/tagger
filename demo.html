@@ -16,7 +16,8 @@
   <h1>Tagger Example</h1>
   <input type="text" value="charles,louis,michel" name="tags" />
   <input type="text" value="charles,louis,michel" name="tags2" />
-  <input type="text" value="charles,louis,michel" name="tags3" />
+  <input type="text" value="charles,louis,michel" name="tags3a" />
+  <input type="text" value="charles,louis,michel" name="tags3b" />
 <script src="tagger.js"></script>
 <script>
   var t1 = tagger(document.querySelector('[name="tags"]'), {
@@ -34,7 +35,7 @@
     },
     link: function() { return false; }
   });
-  var t3 = tagger(document.querySelector('[name="tags3"]'), {
+  var t3 = tagger(document.querySelectorAll('[name^="tags3"]'), {
     allow_duplicates: false,
     allow_spaces: true,
     link: function(name) {
