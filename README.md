@@ -28,7 +28,7 @@ tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 ### Options
 * allow_duplicates (default fasle)
 * allow_spaces (default true)
-* completion object `{list: string[] | function(): Promise(array)|array, delay: miliseconds, min_length: number}`
+* completion object `{list: string[] | function(): Promise(string[])|string[], delay: miliseconds, min_length: number}`
 * link `function(name): string|false` it should return what should be in href attribute or false
 
 
