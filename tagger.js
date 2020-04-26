@@ -243,13 +243,14 @@
         // --------------------------------------------------------------------------------------
         _new_tag: function(name) {
             var close = ['a', {href: '#', 'class': 'close'}, ['\u00D7']];
+            var label = ['span', {'class': 'label'}, [name]]
             var href = this._settings.link(name);
             var li;
             if (href === false) {
-                li = create('li', {}, [['span', {}, [['span', {}, [name]], close]]]);
+                li = create('li', {}, [['span', {}, [label, close]]]);
             } else {
                 var a_atts = {href: href, target: '_black'};
-                li = create('li', {}, [['a', a_atts, [['span', {}, [name]], close]]]);
+                li = create('li', {}, [['a', a_atts, [label, close]]]);
             }
             this._ul.insertBefore(li, this._new_input_tag.parentNode);
         },
@@ -266,7 +267,7 @@
         // --------------------------------------------------------------------------------------
         remove_tag: function(close) {
             var li = close.closest('li');
-            var name = li.querySelector('span').innerText;
+            var name = li.querySelector('.label').innerText;
             this._ul.removeChild(li);
             this._tags = this._tags.filter(function(tag) {
                 return name !== tag;
