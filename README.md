@@ -26,8 +26,9 @@ tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 * complete(string)
 
 ### Options
-* allow_duplicates (default fasle)
+* allow_duplicates (default false)
 * allow_spaces (default true)
+* allow_empty_tags (default true)
 * completion object `{list: string[] | function(): Promise(string[])|string[], delay: miliseconds, min_length: number}`
 * link `function(name): string|false` it should return what should be in href attribute or false
 
@@ -46,7 +47,7 @@ tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 ### 0.1.1
 * fix initalization of tags from input
 ### 0.1.0
-* inital version
+* initial version
 
 ## License
 

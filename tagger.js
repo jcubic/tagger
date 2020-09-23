@@ -100,6 +100,7 @@
     tagger.defaults = {
         allow_duplicates: false,
         allow_spaces: true,
+        allow_empty_tags: true,
         completion: {
             list: [],
             delay: 400,
@@ -259,10 +260,27 @@
             if (!this._settings.allow_duplicates && this._tags.indexOf(name) !== -1) {
                 return false;
             }
+            if (!this._settings.allow_empty_tags && this.is_empty(name)) {
+                return false;
+            }
             this._new_tag(name)
             this._tags.push(name);
             this._input.value = this._tags.join(', ');
             return true;
+        },
+        // --------------------------------------------------------------------------------------
+        is_empty: function(value) {
+            switch(value) {
+                case '':
+                case '""':
+                case "''":
+                case '``':
+                case undefined:
+                case null:
+                    return true;
+                default:
+                    return false;
+            }
         },
         // --------------------------------------------------------------------------------------
         remove_tag: function(close) {
