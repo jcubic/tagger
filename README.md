@@ -28,14 +28,13 @@ tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 ### Options
 * allow_duplicates (default false)
 * allow_spaces (default true)
-* allow_empty_tags (default true)
 * completion object `{list: string[] | function(): Promise(string[])|string[], delay: miliseconds, min_length: number}`
 * link `function(name): string|false` it should return what should be in href attribute or false
 
 
 ## Changelog
 ### 0.3.0
-* add in option to reject empty tags
+* reject empty tags
 ### 0.2.1
 * Fix remove_tag when links are disabled
 ### 0.2.0

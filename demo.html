@@ -18,7 +18,6 @@
   <input type="text" value="charles,louis,michel" name="tags2" />
   <input type="text" value="charles,louis,michel" name="tags3a" />
   <input type="text" value="charles,louis,michel" name="tags3b" />
-  <input type="text" value="charles,louis,michel" name="tags4" />
 <script src="tagger.js"></script>
 <script>
   var t1 = tagger(document.querySelector('[name="tags"]'), {
@@ -41,14 +40,6 @@
     allow_spaces: true,
     link: function(name) {
       return `javascript:alert('${name}');`;
-    }
-  });
-  var t4 = tagger(document.querySelectorAll('[name^="tags4"]'), {
-    allow_duplicates: false,
-    allow_spaces: true,
-    allow_empty_tags: false,
-    link: function(name) {
-      return false;
     }
   });
 </script>
