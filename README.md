@@ -3,7 +3,7 @@
  |_   _|___ ___ ___ ___ ___
    | | | .'| . | . | -_|  _|
    |_| |__,|_  |_  |___|_|
-           |___|___|   version 0.2.1
+           |___|___|   version 0.2.2
 ```
 ## Tagger - Vanilla JavaScript Tag Editor
 
@@ -33,7 +33,7 @@ tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 
 
 ## Changelog
-### 0.3.0
+### 0.2.2
 * reject empty tags
 ### 0.2.1
 * Fix remove_tag when links are disabled
