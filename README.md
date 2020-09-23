@@ -34,6 +34,8 @@ tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 
 
 ## Changelog
+### 0.3.0
+* add in option to reject empty tags
 ### 0.2.1
 * Fix remove_tag when links are disabled
 ### 0.2.0
