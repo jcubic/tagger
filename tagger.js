@@ -3,7 +3,7 @@
  * |_   _|___ ___ ___ ___ ___
  *   | | | .'| . | . | -_|  _|
  *   |_| |__,|_  |_  |___|_|
- *           |___|___|   version 0.2.1
+ *           |___|___|   version 0.2.2
  *
  * Tagger - Vanilla JavaScript Tag Editor
  *
@@ -259,10 +259,27 @@
             if (!this._settings.allow_duplicates && this._tags.indexOf(name) !== -1) {
                 return false;
             }
+            if (this.is_empty(name)) {
+                return false;
+            }
             this._new_tag(name)
             this._tags.push(name);
             this._input.value = this._tags.join(', ');
             return true;
+        },
+        // --------------------------------------------------------------------------------------
+        is_empty: function(value) {
+            switch(value) {
+                case '':
+                case '""':
+                case "''":
+                case '``':
+                case undefined:
+                case null:
+                    return true;
+                default:
+                    return false;
+            }
         },
         // --------------------------------------------------------------------------------------
         remove_tag: function(close) {

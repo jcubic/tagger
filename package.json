@@ -1,6 +1,6 @@
 {
   "name": "@jcubic/tagger",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Vanilla JavaScript tag editor",
   "main": "tagger.js",
   "scripts": {

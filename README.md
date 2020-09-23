@@ -3,7 +3,7 @@
  |_   _|___ ___ ___ ___ ___
    | | | .'| . | . | -_|  _|
    |_| |__,|_  |_  |___|_|
-           |___|___|   version 0.2.1
+           |___|___|   version 0.2.2
 ```
 ## Tagger - Vanilla JavaScript Tag Editor
 
@@ -26,13 +26,15 @@ tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 * complete(string)
 
 ### Options
-* allow_duplicates (default fasle)
+* allow_duplicates (default false)
 * allow_spaces (default true)
 * completion object `{list: string[] | function(): Promise(string[])|string[], delay: miliseconds, min_length: number}`
 * link `function(name): string|false` it should return what should be in href attribute or false
 
 
 ## Changelog
+### 0.2.2
+* reject empty tags
 ### 0.2.1
 * Fix remove_tag when links are disabled
 ### 0.2.0
@@ -46,7 +48,7 @@ tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 ### 0.1.1
 * fix initalization of tags from input
 ### 0.1.0
-* inital version
+* initial version
 
 ## License
 
