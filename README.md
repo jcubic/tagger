@@ -3,11 +3,11 @@
  |_   _|___ ___ ___ ___ ___
    | | | .'| . | . | -_|  _|
    |_| |__,|_  |_  |___|_|
-           |___|___|   version 0.2.2
+           |___|___|   version 0.2.3
 ```
 ## Tagger - Vanilla JavaScript Tag Editor
 
-[![npm](https://img.shields.io/badge/npm-0.2.2-blue.svg)](https://www.npmjs.com/package/@jcubic/tagger)
+[![npm](https://img.shields.io/badge/npm-0.2.3-blue.svg)](https://www.npmjs.com/package/@jcubic/tagger)
 
 Usage:
 
@@ -33,6 +33,8 @@ tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 
 
 ## Changelog
+### 0.2.3
+* fix ambiguous tags
 ### 0.2.2
 * reject empty tags
 ### 0.2.1
@@ -52,6 +54,6 @@ tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 
 ## License
 
-Copyright (c) 2018-2020 [Jakub T. Jankiewicz](https://jcubic.pl/me)
+Copyright (c) 2018-2021 [Jakub T. Jankiewicz](https://jcubic.pl/me)
 
 Released under the MIT license

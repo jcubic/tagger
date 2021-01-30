@@ -3,11 +3,11 @@
  * |_   _|___ ___ ___ ___ ___
  *   | | | .'| . | . | -_|  _|
  *   |_| |__,|_  |_  |___|_|
- *           |___|___|   version 0.2.2
+ *           |___|___|   version 0.2.3
  *
  * Tagger - Vanilla JavaScript Tag Editor
  *
- * Copyright (c) 2018-2020 Jakub T. Jankiewicz <https://jcubic.pl/me>
+ * Copyright (c) 2018-2021 Jakub T. Jankiewicz <https://jcubic.pl/me>
  * Released under the MIT license
  */
 /* global define, module, global */
@@ -94,6 +94,11 @@
             });
         }
         return tag;
+    }
+    // ------------------------------------------------------------------------------------------
+    function escape_regex(str) {
+        var special = /([-\\^$[\]()+{}?*.|])/g;
+        return str.replace(special, '\\$1');
     }
     var id = 0;
     // ------------------------------------------------------------------------------------------
@@ -197,7 +202,15 @@
         },
         // --------------------------------------------------------------------------------------
         _tag_selected: function(tag) {
-            return this._last_completion && this._last_completion.includes(tag);
+            if (this._last_completion) {
+                if (this._last_completion.includes(tag)) {
+                    var re = new RegExp('^' + escape_regex(tag));
+                    return this._last_completion.filter(function(test_tag) {
+                        return re.test(test_tag);
+                    }).length === 1;
+                }
+            }
+            return false;
         },
         // --------------------------------------------------------------------------------------
         _toggle_completion: function(toggle) {
