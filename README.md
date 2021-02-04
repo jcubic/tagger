@@ -35,7 +35,7 @@ tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 
 * `add_tag(string): boolean`
 * `remove_tag(string): booelan`
-* `complete(string)`
+* `complete(string): void`
 
 ### Options:
 

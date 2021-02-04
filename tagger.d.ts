@@ -19,13 +19,15 @@ declare namespace Tagger {
         delay: number;
         min_length: number;
     }
+    type link = (name: string) => (string|false);
 }
 
 interface tagger_options {
-    wrap: boolean;
-    allow_duplicates: boolean;
-    allow_spaces: boolean;
-    completion: Tagger.completion;
+    wrap?: boolean;
+    allow_duplicates?: boolean;
+    allow_spaces?: boolean;
+    completion?: Tagger.completion;
+    link?: Tagger.link;
 }
 
 interface tagger_instance {
