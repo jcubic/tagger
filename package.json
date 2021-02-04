@@ -1,7 +1,7 @@
 {
   "name": "@jcubic/tagger",
-  "version": "0.2.3",
-  "description": "Vanilla JavaScript tag editor",
+  "version": "0.3.0",
+  "description": "Zero dependency, Vanilla JavaScript Tag Editor",
   "typings": "tagger.d.ts",
   "main": "tagger.js",
   "scripts": {
@@ -14,6 +14,8 @@
     "tag",
     "editor",
     "inline",
+    "interfence",
+    "widget",
     "component",
     "widget",
     "ui"
