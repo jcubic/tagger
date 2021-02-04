@@ -3,11 +3,11 @@
  |_   _|___ ___ ___ ___ ___
    | | | .'| . | . | -_|  _|
    |_| |__,|_  |_  |___|_|
-           |___|___|   version 0.3.0
+           |___|___|   version 0.3.1
 ```
 # [Tagger: Zero dependency, Vanilla JavaScript Tag Editor](https://github.com/jcubic/tagger)
 
-[![npm](https://img.shields.io/badge/npm-0.3.0-blue.svg)](https://www.npmjs.com/package/@jcubic/tagger)
+[![npm](https://img.shields.io/badge/npm-0.3.1-blue.svg)](https://www.npmjs.com/package/@jcubic/tagger)
 
 ## Installation
 
@@ -47,6 +47,8 @@ tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 
 
 ## Changelog
+### 0.3.1
+* fix npm package
 ### 0.3.0
 * add wrap option
 * fix remove_tag API
