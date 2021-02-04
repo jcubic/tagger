@@ -5,7 +5,7 @@
  *   |_| |__,|_  |_  |___|_|
  *           |___|___|   version 0.3.0
  *
- * Tagger - Vanilla JavaScript Tag Editor
+ * Tagger - Zero dependency, Vanilla JavaScript Tag Editor
  *
  * Copyright (c) 2018-2021 Jakub T. Jankiewicz <https://jcubic.pl/me>
  * Released under the MIT license
@@ -119,7 +119,7 @@
         init: function(input, settings) {
             this._id = ++id;
             var self = this;
-            this._settings = settings;
+            this._settings = settings || {};
             this._ul = document.createElement('ul');
             this._input = input;
             var wrapper = document.createElement('div');
@@ -152,7 +152,7 @@
             var self = this;
             this._ul.addEventListener('click', function(event) {
                 if (event.target.className.match(/close/)) {
-                    self.remove_tag(event.target);
+                    self._remove_tag(event.target);
                     event.preventDefault();
                 }
             });
@@ -260,7 +260,7 @@
         // --------------------------------------------------------------------------------------
         _new_tag: function(name) {
             var close = ['a', {href: '#', 'class': 'close'}, ['\u00D7']];
-            var label = ['span', {'class': 'label'}, [name]]
+            var label = ['span', {'class': 'label'}, [name]];
             var href = this._settings.link(name);
             var li;
             if (href === false) {
@@ -279,7 +279,7 @@
             if (this.is_empty(name)) {
                 return false;
             }
-            this._new_tag(name)
+            this._new_tag(name);
             this._tags.push(name);
             this._input.value = this._tags.join(', ');
             return true;
@@ -299,14 +299,31 @@
             }
         },
         // --------------------------------------------------------------------------------------
-        remove_tag: function(close) {
-            var li = close.closest('li');
-            var name = li.querySelector('.label').innerText;
-            this._ul.removeChild(li);
+        remove_tag: function(name, remove_dom = true) {
             this._tags = this._tags.filter(function(tag) {
                 return name !== tag;
             });
             this._input.value = this._tags.join(', ');
+            if (remove_dom) {
+                var tags = Array.from(this._ul.querySelectorAll('.label'));
+                var re = new RegExp('^\s*' + escape_regex(name) + '\s*$');
+                var span = tags.find(function(node) {
+                    return node.innerText.match(re);
+                });
+                if (!span) {
+                    return false;
+                }
+                var li = span.closest('li');
+                this._ul.removeChild(li);
+                return true;
+            }
+        },
+        // --------------------------------------------------------------------------------------
+        _remove_tag: function(close) {
+            var li = close.closest('li');
+            var name = li.querySelector('.label').innerText;
+            this._ul.removeChild(li);
+            this.remove_tag(name, false);
         }
     };
     // ------------------------------------------------------------------------------------------

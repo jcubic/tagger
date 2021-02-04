@@ -3,36 +3,55 @@
  |_   _|___ ___ ___ ___ ___
    | | | .'| . | . | -_|  _|
    |_| |__,|_  |_  |___|_|
-           |___|___|   version 0.2.3
+           |___|___|   version 0.3.0
 ```
-## Tagger - Vanilla JavaScript Tag Editor
+# [Tagger: Zero dependency, Vanilla JavaScript Tag Editor](https://github.com/jcubic/tagger)
 
-[![npm](https://img.shields.io/badge/npm-0.2.3-blue.svg)](https://www.npmjs.com/package/@jcubic/tagger)
+[![npm](https://img.shields.io/badge/npm-0.3.0-blue.svg)](https://www.npmjs.com/package/@jcubic/tagger)
 
-Usage:
+## Installation
+
+```
+npm install @jcubic/tagger
+```
+
+or
+
+```
+yarn add @jcubic/tagger
+```
+
+## Usage
 
 ```
 tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 ```
 
-[Demo](https://codepen.io/jcubic/pen/YbYpqO)
+[Online Demo](https://codepen.io/jcubic/pen/YbYpqO)
 
 ## API
 
 ### methods:
 
-* add_tag(string)
-* remove_tag(string)
-* complete(string)
+* `add_tag(string): boolean`
+* `remove_tag(string): booelan`
+* `complete(string)`
 
-### Options
+### Options:
+
+* wrap (default false)
 * allow_duplicates (default false)
 * allow_spaces (default true)
-* completion object `{list: string[] | function(): Promise(string[])|string[], delay: miliseconds, min_length: number}`
+* completion `{list: string[] | function(): Promise(string[])|string[], delay: miliseconds, min_length: number}`
 * link `function(name): string|false` it should return what should be in href attribute or false
 
 
 ## Changelog
+### 0.3.0
+* add wrap option
+* fix remove_tag API
+* make settings optional
+* add typescript types
 ### 0.2.3
 * fix ambiguous tags
 ### 0.2.2
@@ -54,6 +73,5 @@ tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 
 ## License
 
-Copyright (c) 2018-2021 [Jakub T. Jankiewicz](https://jcubic.pl/me)
-
+Copyright (c) 2018-2021 [Jakub T. Jankiewicz](https://jcubic.pl/me)<br/>
 Released under the MIT license

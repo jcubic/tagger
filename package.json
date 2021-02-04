@@ -2,6 +2,7 @@
   "name": "@jcubic/tagger",
   "version": "0.2.3",
   "description": "Vanilla JavaScript tag editor",
+  "typings": "tagger.d.ts",
   "main": "tagger.js",
   "scripts": {
   },
