@@ -3,7 +3,7 @@
  * |_   _|___ ___ ___ ___ ___
  *   | | | .'| . | . | -_|  _|
  *   |_| |__,|_  |_  |___|_|
- *           |___|___|   version 0.2.3
+ *           |___|___|   version 0.3.0
  *
  * Tagger - Vanilla JavaScript Tag Editor
  *
@@ -21,17 +21,18 @@
     display: flex;
     width: 100%;
     align-items: center;
-    padding: 4px 6px;
+    padding: 4px 0;
     justify-content: space-between;
     box-sizing: border-box;
-    height: 38px;
+    height: auto;
 }
 .tagger ul {
     margin: 0;
     list-style: none;
 }
-.tagger > ul > li:not(.tagger-new) + li {
-   padding-left: 10px;
+.tagger > ul > li {
+    margin: .4rem 0;
+    padding-left: 10px;
 }
 .tagger > ul > li:not(.tagger-new) a,
 .tagger > ul > li:not(.tagger-new) a:visited,
@@ -81,4 +82,8 @@
 .tagger .tagger-completion {
     position: absolute;
     z-index: 100;
+}
+.tagger.wrap > ul {
+    flex-wrap: wrap;
+    justify-content: start;
 }

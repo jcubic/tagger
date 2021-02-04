@@ -3,7 +3,7 @@
  * |_   _|___ ___ ___ ___ ___
  *   | | | .'| . | . | -_|  _|
  *   |_| |__,|_  |_  |___|_|
- *           |___|___|   version 0.2.3
+ *           |___|___|   version 0.3.0
  *
  * Tagger - Vanilla JavaScript Tag Editor
  *
@@ -123,7 +123,11 @@
             this._ul = document.createElement('ul');
             this._input = input;
             var wrapper = document.createElement('div');
-            wrapper.className = 'tagger';
+            if (settings.wrap) {
+                wrapper.className = 'tagger wrap';
+            } else {
+                wrapper.className = 'tagger';
+            }
             this._input.setAttribute('hidden', 'hidden');
             this._input.setAttribute('type', 'hidden');
             var li = document.createElement('li');
