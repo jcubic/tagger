@@ -9,6 +9,10 @@
 
 [![npm](https://img.shields.io/badge/npm-0.3.1-blue.svg)](https://www.npmjs.com/package/@jcubic/tagger)
 
+![Tag Editor widget in JavaScript](https://raw.githubusercontent.com/jcubic/tagger/master/screenshot.png)
+
+[Online Demo](https://codepen.io/jcubic/pen/YbYpqO)
+
 ## Installation
 
 ```
@@ -26,8 +30,6 @@ yarn add @jcubic/tagger
 ```
 tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 ```
-
-[Online Demo](https://codepen.io/jcubic/pen/YbYpqO)
 
 ## API
 
