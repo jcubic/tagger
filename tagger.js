@@ -3,7 +3,7 @@
  * |_   _|___ ___ ___ ___ ___
  *   | | | .'| . | . | -_|  _|
  *   |_| |__,|_  |_  |___|_|
- *           |___|___|   version 0.3.1
+ *           |___|___|   version 0.3.2
  *
  * Tagger - Zero dependency, Vanilla JavaScript Tag Editor
  *
@@ -169,6 +169,7 @@
                         var li = self._ul.querySelector('li:nth-last-child(2)');
                         self._ul.removeChild(li);
                         self._tags.pop();
+                        self._input.value = self._tags.join(',');
                     }
                     event.preventDefault();
                 } else if (event.keyCode === 32 && (event.ctrlKey || event.metaKey)) {
@@ -281,7 +282,7 @@
             }
             this._new_tag(name);
             this._tags.push(name);
-            this._input.value = this._tags.join(', ');
+            this._input.value = this._tags.join(',');
             return true;
         },
         // --------------------------------------------------------------------------------------
@@ -303,7 +304,7 @@
             this._tags = this._tags.filter(function(tag) {
                 return name !== tag;
             });
-            this._input.value = this._tags.join(', ');
+            this._input.value = this._tags.join(',');
             if (remove_dom) {
                 var tags = Array.from(this._ul.querySelectorAll('.label'));
                 var re = new RegExp('^\s*' + escape_regex(name) + '\s*$');

@@ -3,11 +3,11 @@
  |_   _|___ ___ ___ ___ ___
    | | | .'| . | . | -_|  _|
    |_| |__,|_  |_  |___|_|
-           |___|___|   version 0.3.1
+           |___|___|   version 0.3.2
 ```
 # [Tagger: Zero dependency, Vanilla JavaScript Tag Editor](https://github.com/jcubic/tagger)
 
-[![npm](https://img.shields.io/badge/npm-0.3.1-blue.svg)](https://www.npmjs.com/package/@jcubic/tagger)
+[![npm](https://img.shields.io/badge/npm-0.3.2-blue.svg)](https://www.npmjs.com/package/@jcubic/tagger)
 
 ![Tag Editor widget in JavaScript](https://raw.githubusercontent.com/jcubic/tagger/master/screenshot.png)
 
@@ -49,6 +49,9 @@ tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 
 
 ## Changelog
+### 0.3.2
+* [Breaking] value in input no longer have space after comma
+* fix updating input when deleting tag using backspace
 ### 0.3.1
 * fix npm package
 ### 0.3.0
