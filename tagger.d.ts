@@ -3,7 +3,7 @@
  * |_   _|___ ___ ___ ___ ___
  *   | | | .'| . | . | -_|  _|
  *   |_| |__,|_  |_  |___|_|
- *           |___|___|   version 0.3.2
+ *           |___|___|   version 0.4.0
  *
  * Tagger - Zero dependency, Vanilla JavaScript Tag Editor
  *
@@ -19,13 +19,14 @@ declare namespace Tagger {
         delay: number;
         min_length: number;
     }
-    type link = (name: string) => (string|false);
+    type link = (name: string) => (string | false);
 }
 
 interface tagger_options {
     wrap?: boolean;
     allow_duplicates?: boolean;
     allow_spaces?: boolean;
+    add_on_blur?: boolean;
     completion?: Tagger.completion;
     link?: Tagger.link;
 }

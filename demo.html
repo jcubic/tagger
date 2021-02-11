@@ -8,7 +8,7 @@
 <link href="tagger.css" rel="stylesheet">
 <style>
 .tagger + .tagger {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 </style>
 </head>
@@ -21,26 +21,27 @@
 <script src="tagger.js"></script>
 <script>
   var t1 = tagger(document.querySelector('[name="tags"]'), {
-    allow_duplicates: false,
-    allow_spaces: true,
-    completion: {list: ['foo', 'bar', 'baz']}
+      allow_duplicates: false,
+      allow_spaces: true,
+      add_on_blur: true,
+      completion: {list: ['foo', 'bar', 'baz']}
   });
   var t2 = tagger(document.querySelector('[name="tags2"]'), {
-    allow_duplicates: false,
-    allow_spaces: true,
-    completion: {
-      list: function() {
-        return Promise.resolve(['foo', 'bar', 'baz', 'foo-baz']);
-      }
-    },
-    link: function() { return false; }
+      allow_duplicates: false,
+      allow_spaces: true,
+      completion: {
+          list: function() {
+              return Promise.resolve(['foo', 'bar', 'baz', 'foo-baz']);
+          }
+      },
+      link: function() { return false; }
   });
   var t3 = tagger(document.querySelectorAll('[name^="tags3"]'), {
-    allow_duplicates: false,
-    allow_spaces: true,
-    link: function(name) {
-      return `javascript:alert('${name}');`;
-    }
+      allow_duplicates: false,
+      allow_spaces: true,
+      link: function(name) {
+          return `javascript:alert('${name}');`;
+      }
   });
 </script>
 </body>

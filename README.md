@@ -3,11 +3,11 @@
  |_   _|___ ___ ___ ___ ___
    | | | .'| . | . | -_|  _|
    |_| |__,|_  |_  |___|_|
-           |___|___|   version 0.3.2
+           |___|___|   version 0.4.0
 ```
 # [Tagger: Zero dependency, Vanilla JavaScript Tag Editor](https://github.com/jcubic/tagger)
 
-[![npm](https://img.shields.io/badge/npm-0.3.2-blue.svg)](https://www.npmjs.com/package/@jcubic/tagger)
+[![npm](https://img.shields.io/badge/npm-0.4.0-blue.svg)](https://www.npmjs.com/package/@jcubic/tagger)
 
 ![Tag Editor widget in JavaScript](https://raw.githubusercontent.com/jcubic/tagger/master/screenshot.png)
 
@@ -41,17 +41,19 @@ tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 
 ### Options:
 
-* wrap (default false)
-* allow_duplicates (default false)
-* allow_spaces (default true)
-* completion `{list: string[] | function(): Promise(string[])|string[], delay: miliseconds, min_length: number}`
-* link `function(name): string|false` it should return what should be in href attribute or false
+* **wrap** (default false)
+* **allow_duplicates** (default false)
+* **allow_spaces** (default true)
+* **add_on_blur** (default false)
+* **completion** `{list: string[] | function(): Promise(string[])|string[], delay: miliseconds, min_length: number}`
+* **link** `function(name): string|false` it should return what should be in href attribute or false
 
 
 ## Changelog
-### 0.3.2
+### 0.4.0
 * [Breaking] value in input no longer have space after comma
 * fix updating input when deleting tag using backspace
+* add option `add_on_blur`
 ### 0.3.1
 * fix npm package
 ### 0.3.0

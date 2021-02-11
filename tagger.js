@@ -3,7 +3,7 @@
  * |_   _|___ ___ ___ ___ ___
  *   | | | .'| . | . | -_|  _|
  *   |_| |__,|_  |_  |___|_|
- *           |___|___|   version 0.3.2
+ *           |___|___|   version 0.4.0
  *
  * Tagger - Zero dependency, Vanilla JavaScript Tag Editor
  *
@@ -110,6 +110,7 @@
             delay: 400,
             min_length: 2
         },
+        add_on_blur: false,
         link: function(name) {
             return '/tag/' + name;
         }
@@ -156,6 +157,13 @@
                     event.preventDefault();
                 }
             });
+            if (this._settings.add_on_blur) {
+                this._new_input_tag.addEventListener('blur', function(event) {
+                    if (self.add_tag(self._new_input_tag.value.trim())) {
+                        self._new_input_tag.value = '';
+                    }
+                });
+            }
             // ----------------------------------------------------------------------------------
             this._new_input_tag.addEventListener('keydown', function(event) {
                 if (event.keyCode === 13 || event.keyCode === 188 ||
