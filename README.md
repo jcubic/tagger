@@ -48,6 +48,10 @@ tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 * **completion** `{list: string[] | function(): Promise(string[])|string[], delay: miliseconds, min_length: number}`
 * **link** `function(name): string|false` it should return what should be in href attribute or false
 
+**NOTE:** if you're familiar with TypeScript you can check the API by looking at
+TypeScript definition file:
+
+[tagger.d.ts](tagger.d.ts)
 
 ## Changelog
 ### 0.4.0
