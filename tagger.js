@@ -110,6 +110,7 @@
             delay: 400,
             min_length: 2
         },
+        tag_limit: -1,
         add_on_blur: false,
         link: function(name) {
             return '/tag/' + name;
@@ -185,6 +186,8 @@
                         self.complete(self._new_input_tag.value);
                     }
                     self._toggle_completion(true);
+                    event.preventDefault();
+                } else if (self._tag_limit()) {
                     event.preventDefault();
                 }
             });
@@ -281,8 +284,15 @@
             this._ul.insertBefore(li, this._new_input_tag.parentNode);
         },
         // --------------------------------------------------------------------------------------
+        _tag_limit: function() {
+            return this._settings.tag_limit > 0 && this._tags.length >= this._settings.tag_limit;
+        },
+        // --------------------------------------------------------------------------------------
         add_tag: function(name) {
             if (!this._settings.allow_duplicates && this._tags.indexOf(name) !== -1) {
+                return false;
+            }
+            if (this._tag_limit()) {
                 return false;
             }
             if (this.is_empty(name)) {

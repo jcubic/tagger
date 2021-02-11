@@ -54,6 +54,7 @@ tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 * [Breaking] value in input no longer have space after comma
 * fix updating input when deleting tag using backspace
 * add option `add_on_blur`
+* add option `tag_limit`
 ### 0.3.1
 * fix npm package
 ### 0.3.0

@@ -27,6 +27,7 @@ interface tagger_options {
     allow_duplicates?: boolean;
     allow_spaces?: boolean;
     add_on_blur?: boolean;
+    tag_limit?: number;
     completion?: Tagger.completion;
     link?: Tagger.link;
 }
