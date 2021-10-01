@@ -15,7 +15,7 @@ declare namespace Tagger {
     type completion_function = () => TypeOrPromise<string[]>;
     type completion_list = string[] | completion_function;
     interface completion {
-        list: completion;
+        list: completion_list;
         delay: number;
         min_length: number;
     }
