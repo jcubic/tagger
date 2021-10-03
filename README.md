@@ -31,6 +31,48 @@ yarn add @jcubic/tagger
 tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 ```
 
+## Usage with React
+
+Tagger can easily be used with ReactJS.
+
+```javascript
+import { useRef, useState, useEffect } from 'react'
+import tagger from '@jcubic/tagger'
+
+function App() {
+  const [tags, setTags] = useState(null)
+  const inputRef = useRef(null)
+
+  // Get current tags
+  const getTags = () => {
+    setTags(inputRef.current.value)
+  }
+
+  // Write the Tagger code inside a useEffect hook
+  // It will run when the component is initially rendered
+  useEffect(() => {
+    // Define the Tagger options
+    const taggerOptions = {
+      allow_spaces: true,
+    }
+
+    // Initialize Tagger
+    tagger(inputRef.current, taggerOptions)
+  }, [])
+
+  return (
+    <div className='app'>
+      <input type='text' defaultValue='charles, louis, michel' ref={inputRef} />
+      <button onClick={getTags}>Get tags</button>
+
+      {tags && <pre>{tags}</pre>}
+    </div>
+  )
+}
+
+export default App
+```
+
 ## API
 
 ### methods:
