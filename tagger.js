@@ -135,6 +135,9 @@
             var li = document.createElement('li');
             li.className = 'tagger-new';
             this._new_input_tag = document.createElement('input');
+            this._new_input_tag.setAttribute('id', 'usertaginput');
+			this._new_input_tag.setAttribute('name', 'usertaginput');
+			this._new_input_tag.setAttribute('type', 'text');
             this.tags_from_input();
             li.appendChild(this._new_input_tag);
             this._completion = document.createElement('div');
