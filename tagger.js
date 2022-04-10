@@ -200,10 +200,10 @@
                         self._new_input_tag.value = '';
                     }
                 } else {
-                    if (typeof self._settings.completion.list === 'function') {
+                	var min = self._settings.completion.min_length;
+                    if (typeof self._settings.completion.list === 'function' && value.length >= min) {
                         self.complete(value);
                     }
-                    var min = self._settings.completion.min_length;
                     self._toggle_completion(value.length >= min);
                 }
             });
@@ -242,6 +242,9 @@
             this._last_completion = list;
             if (list.length) {
                 var id = 'tagger-completion-' + this._id;
+                if (!this._settings.allow_duplicates) {
+                    list = list.filter(x => !this._tags.includes(x));
+                }
                 var datalist = create('datalist', {id: id}, list.map(function(tag) {
                     return ['option', {}, [tag]];
                 }));
