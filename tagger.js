@@ -242,8 +242,9 @@
             this._last_completion = list;
             if (list.length) {
                 var id = 'tagger-completion-' + this._id;
-                if (!this._settings.allow_duplicates)
+                if (!this._settings.allow_duplicates) {
                     list = list.filter(x => !this._tags.includes(x));
+                }
                 var datalist = create('datalist', {id: id}, list.map(function(tag) {
                     return ['option', {}, [tag]];
                 }));
