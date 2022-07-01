@@ -187,7 +187,7 @@
                     }
                     self._toggle_completion(true);
                     event.preventDefault();
-                } else if (self._tag_limit()) {
+                } else if (self._tag_limit() && event.keyCode !== 9) { // tab
                     event.preventDefault();
                 }
             });
