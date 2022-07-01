@@ -145,6 +145,7 @@
             wrapper.appendChild(this._ul);
             li.appendChild(this._completion);
             this._add_events();
+            this._toggle_completion(false);
             if (this._settings.completion.list instanceof Array) {
                 this._build_completion(this._settings.completion.list);
             }
@@ -233,7 +234,7 @@
             if (toggle) {
                 this._new_input_tag.setAttribute('list', 'tagger-completion-' + this._id);
             } else {
-                this._new_input_tag.removeAttribute('list');
+                this._new_input_tag.setAttribute('list', 'tagger-completion-disabled-' + this._id);
             }
         },
         // --------------------------------------------------------------------------------------
