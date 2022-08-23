@@ -89,7 +89,7 @@ export default App
 * **add_on_blur** (default false)
 * **completion** `{list: string[] | function(): Promise(string[])|string[], delay: miliseconds, min_length: number}`
 * **link** `function(name): string|false` it should return what should be in href attribute or false
-* **tag_limit** (default -1)
+* **tag_limit** `number` (default -1) limit number of tags, when set to -1 there are no limits
 
 **NOTE:** if you're familiar with TypeScript you can check the API by looking at
 TypeScript definition file:
