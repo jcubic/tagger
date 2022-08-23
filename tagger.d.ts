@@ -3,11 +3,11 @@
  * |_   _|___ ___ ___ ___ ___
  *   | | | .'| . | . | -_|  _|
  *   |_| |__,|_  |_  |___|_|
- *           |___|___|   version 0.4.2
+ *           |___|___|   version 0.4.3
  *
  * Tagger - Zero dependency, Vanilla JavaScript Tag Editor
  *
- * Copyright (c) 2018-2021 Jakub T. Jankiewicz <https://jcubic.pl/me>
+ * Copyright (c) 2018-2023 Jakub T. Jankiewicz <https://jcubic.pl/me>
  * Released under the MIT license
  */
 declare namespace Tagger {

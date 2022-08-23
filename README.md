@@ -3,11 +3,11 @@
  |_   _|___ ___ ___ ___ ___
    | | | .'| . | . | -_|  _|
    |_| |__,|_  |_  |___|_|
-           |___|___|   version 0.4.2
+           |___|___|   version 0.4.3
 ```
 # [Tagger: Zero dependency, Vanilla JavaScript Tag Editor](https://github.com/jcubic/tagger)
 
-[![npm](https://img.shields.io/badge/npm-0.4.2-blue.svg)](https://www.npmjs.com/package/@jcubic/tagger)
+[![npm](https://img.shields.io/badge/npm-0.4.3-blue.svg)](https://www.npmjs.com/package/@jcubic/tagger)
 
 ![Tag Editor widget in JavaScript](https://raw.githubusercontent.com/jcubic/tagger/master/screenshot.png)
 
@@ -97,6 +97,8 @@ TypeScript definition file:
 [tagger.d.ts](tagger.d.ts)
 
 ## Changelog
+### 0.4.3
+* Fix completion on Safari [#7](https://github.com/jcubic/tagger/issues/7)
 ### 0.4.2
 * Fix autocomplete [#22](https://github.com/jcubic/tagger/pull/22)
 ### 0.4.1
