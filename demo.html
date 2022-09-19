@@ -40,6 +40,7 @@
   var t3 = tagger(document.querySelectorAll('[name^="tags3"]'), {
       allow_duplicates: false,
       allow_spaces: true,
+      wrap: true,
       link: function(name) {
           return `javascript:alert('${name}');`;
       }
