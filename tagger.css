@@ -27,8 +27,6 @@
     height: auto;
     flex: 0 0 auto;
     overflow-y: scroll;
-}
-.tagger ul {
     margin: 0;
     list-style: none;
 }
@@ -37,20 +35,17 @@
     margin: 0.4rem 5px 4px;
 }
 .tagger > ul > li:not(.tagger-new) a,
-.tagger > ul > li:not(.tagger-new) a:visited,
-.tagger-new ul a,
-.tagger-new ul a:visited {
+.tagger > ul > li:not(.tagger-new) a:visited {
+    text-decoration: none;
     color: black;
 }
-.tagger > ul > li:not(.tagger-new) > a,
-.tagger li:not(.tagger-new) > span,
-.tagger .tagger-new ul {
+.tagger > ul > li:not(.tagger-new) > :first-child {
     padding: 4px 4px 4px 8px;
     background: #B1C3D7;
     border: 1px solid #4181ed;
     border-radius: 3px;
 }
-.tagger li:not(.tagger-new) > span,
+.tagger > ul > li:not(.tagger-new) > span,
 .tagger > ul > li:not(.tagger-new) > a > span {
     white-space: nowrap;
 }
@@ -67,9 +62,6 @@
 .tagger li a.close:hover {
     color: white;
 }
-.tagger li:not(.tagger-new) a {
-    text-decoration: none;
-}
 .tagger .tagger-new input {
     border: none;
     outline: none;
@@ -82,13 +74,6 @@
     flex-grow: 1;
     position: relative;
     min-width: 40px;
-}
-.tagger .tagger-new ul {
-    padding: 5px;
-}
-.tagger .tagger-completion {
-    position: absolute;
-    z-index: 100;
 }
 .tagger.wrap > ul {
     flex-wrap: wrap;
