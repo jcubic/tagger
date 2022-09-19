@@ -83,7 +83,7 @@ export default App
 
 ### Options:
 
-* **wrap** (default false)
+* **wrap** (default false) allow tags to wrap onto new lines instead of overflow scroll
 * **allow_duplicates** (default false)
 * **allow_spaces** (default true)
 * **add_on_blur** (default false)
