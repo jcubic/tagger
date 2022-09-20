@@ -26,7 +26,7 @@
     box-sizing: border-box;
     height: auto;
     flex: 0 0 auto;
-    overflow-y: scroll;
+    overflow-y: auto;
     margin: 0;
     list-style: none;
 }
