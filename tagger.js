@@ -120,7 +120,6 @@
     tagger.fn = tagger.prototype = {
         init: function(input, settings) {
             this._id = ++id;
-            var self = this;
             this._settings = settings || {};
             this._ul = document.createElement('ul');
             this._input = input;
@@ -157,6 +156,8 @@
                 if (event.target.className.match(/close/)) {
                     self._remove_tag(event.target);
                     event.preventDefault();
+                } else if (event.target.tagName === 'UL') { //Focus new input when clicking in the whitespace of the Tagger instance
+                    self._new_input_tag.focus();
                 }
             });
             if (this._settings.add_on_blur) {
