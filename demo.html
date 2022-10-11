@@ -5,7 +5,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Tagger Example</title>
+<!--     Link to CSS -->
 <link href="tagger.css" rel="stylesheet">
+    
+<!--     Inline CSS Styling? -->
 <style>
 .tagger + .tagger {
     margin-top: 10px;
@@ -18,7 +21,11 @@
   <input type="text" value="charles,louis,michel" name="tags2" />
   <input type="text" value="charles,louis,michel" name="tags3a" />
   <input type="text" value="charles,louis,michel,lorem,ipsum,dolor,sit,amet,this is some long tag that should be wrapped" name="tags3b" />
+    
+<!--     Link to JavaScript -->
 <script src="tagger.js"></script>
+    
+<!--     Inline JavaScript Styling  -->
 <script>
   var t1 = tagger(document.querySelector('[name="tags"]'), {
       allow_duplicates: false,
