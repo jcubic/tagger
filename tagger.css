@@ -19,6 +19,7 @@
 }
 .tagger > ul {
     display: flex;
+    flex-wrap:wrap;
     width: 100%;
     align-items: center;
     padding: 4px 5px 0;
@@ -77,5 +78,4 @@
 }
 .tagger.wrap > ul {
     flex-wrap: wrap;
-    justify-content: start;
 }
