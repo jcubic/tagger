@@ -68,12 +68,14 @@
     box-shadow: none;
     width: 100%;
     padding-left: 0;
+    box-sizing: border-box;
     background: transparent;
 }
 .tagger .tagger-new {
     flex-grow: 1;
     position: relative;
     min-width: 40px;
+    width: 1px;
 }
 .tagger.wrap > ul {
     flex-wrap: wrap;
