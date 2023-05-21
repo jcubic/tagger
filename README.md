@@ -94,9 +94,11 @@ export default App
 **NOTE:** if you're familiar with TypeScript you can check the API by looking at
 TypeScript definition file:
 
-[tagger.d.ts](tagger.d.ts)
+[tagger.d.ts](https://github.com/jcubic/tagger/blob/master/tagger.d.ts)
 
 ## Changelog
+### 0.4.5
+* fix another wrapping issue [#37](https://github.com/jcubic/tagger/issues/37)
 ### 0.4.4
 * fix wrapping issues [#30](https://github.com/jcubic/tagger/pull/30) thanks to [James Lucas](https://github.com/lucasnetau)
 ### 0.4.3
