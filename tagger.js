@@ -129,12 +129,18 @@
             } else {
                 wrapper.className = 'tagger';
             }
+            if (!settings.placeholder && this._input.hasAttribute('placeholder')) {
+                settings.placeholder = this._input.placeholder;
+            }
             this._input.setAttribute('hidden', 'hidden');
             this._input.setAttribute('type', 'hidden');
             var li = document.createElement('li');
             li.className = 'tagger-new';
             this._new_input_tag = document.createElement('input');
             this.tags_from_input();
+            if (settings.placeholder) {
+                this._new_input_tag.setAttribute('placeholder', settings.placeholder);
+            }
             li.appendChild(this._new_input_tag);
             this._completion = document.createElement('div');
             this._completion.className = 'tagger-completion';
