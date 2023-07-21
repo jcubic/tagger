@@ -31,6 +31,8 @@ yarn add @jcubic/tagger
 tagger(document.querySelector('[name="tags"]'), {allow_spaces: false});
 ```
 
+Multiple inputs can be created by passing a NodeList or array of elements (eg. document.querySelectorAll()). If only one element is contained in the list then tagger will return the tagger instance, an array of tagger instances will be returned if the number of elements is greater than 1.
+
 ## Usage with React
 
 Tagger can easily be used with ReactJS.
