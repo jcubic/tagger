@@ -90,6 +90,7 @@ export default App
 * **completion** `{list: string[] | function(): Promise(string[])|string[], delay: miliseconds, min_length: number}`
 * **link** `function(name): string|false` it should return what should be in href attribute or false
 * **tag_limit** `number` (default -1) limit number of tags, when set to -1 there are no limits
+* **placeholder** `string` (default unset) If set in options or on the initial input, this placeholder value will be shown in the tag entry input
 
 **NOTE:** if you're familiar with TypeScript you can check the API by looking at
 TypeScript definition file:
