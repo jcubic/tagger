@@ -119,7 +119,8 @@
         add_on_blur: false,
         link: function(name) {
             return '/tag/' + name;
-        }
+        },
+        filter: (name) => name,
     };
     // ------------------------------------------------------------------------------------------
     tagger.fn = tagger.prototype = {
@@ -305,13 +306,14 @@
         },
         // --------------------------------------------------------------------------------------
         add_tag: function(name) {
-            if (!this._settings.allow_duplicates && this._tags.indexOf(name) !== -1) {
-                return false;
-            }
             if (this._tag_limit()) {
                 return false;
             }
+            name = this._settings.filter(name);
             if (this.is_empty(name)) {
+                return false;
+            }
+            if (!this._settings.allow_duplicates && this._tags.indexOf(name) !== -1) {
                 return false;
             }
             this._new_tag(name);

@@ -93,6 +93,7 @@ export default App
 * **link** `function(name): string|false` it should return what should be in href attribute or false
 * **tag_limit** `number` (default -1) limit number of tags, when set to -1 there are no limits
 * **placeholder** `string` (default unset) If set in options or on the initial input, this placeholder value will be shown in the tag entry input
+* **filter** `function(name): string` it should return the tag name after applying any filters (eg String.toUpperCase()), empty string to filter out tag and prevent creation.
 
 **NOTE:** if you're familiar with TypeScript you can check the API by looking at
 TypeScript definition file:
