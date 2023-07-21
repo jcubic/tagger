@@ -30,6 +30,7 @@ interface tagger_options {
     tag_limit?: number;
     completion?: Tagger.completion;
     link?: Tagger.link;
+    placeholder?: string;
 }
 
 interface tagger_instance {

@@ -3,11 +3,11 @@
  |_   _|___ ___ ___ ___ ___
    | | | .'| . | . | -_|  _|
    |_| |__,|_  |_  |___|_|
-           |___|___|   version 0.4.5
+           |___|___|   version 0.5.0
 ```
 # [Tagger: Zero dependency, Vanilla JavaScript Tag Editor](https://github.com/jcubic/tagger)
 
-[![npm](https://img.shields.io/badge/npm-0.4.5-blue.svg)](https://www.npmjs.com/package/@jcubic/tagger)
+[![npm](https://img.shields.io/badge/npm-0.5.0-blue.svg)](https://www.npmjs.com/package/@jcubic/tagger)
 
 ![Tag Editor widget in JavaScript](https://raw.githubusercontent.com/jcubic/tagger/master/screenshot.png)
 
@@ -100,6 +100,9 @@ TypeScript definition file:
 [tagger.d.ts](https://github.com/jcubic/tagger/blob/master/tagger.d.ts)
 
 ## Changelog
+### 0.5.0
+* fix initialization [#23](https://github.com/jcubic/tagger/issues/23). Thanks to [James Lucas](https://github.com/lucasnetau)
+* add placeholder option. Thanks to [James Lucas](https://github.com/lucasnetau)
 ### 0.4.5
 * fix another wrapping issue [#37](https://github.com/jcubic/tagger/issues/37)
 ### 0.4.4
@@ -143,5 +146,5 @@ TypeScript definition file:
 
 ## License
 
-Copyright (c) 2018-2022 [Jakub T. Jankiewicz](https://jcubic.pl/me)<br/>
+Copyright (c) 2018-2023 [Jakub T. Jankiewicz](https://jcubic.pl/me)<br/>
 Released under the MIT license
