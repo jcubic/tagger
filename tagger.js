@@ -3,7 +3,7 @@
  * |_   _|___ ___ ___ ___ ___
  *   | | | .'| . | . | -_|  _|
  *   |_| |__,|_  |_  |___|_|
- *           |___|___|   version 0.4.4
+ *           |___|___|   version 0.4.5
  *
  * Tagger - Zero dependency, Vanilla JavaScript Tag Editor
  *
@@ -30,6 +30,11 @@
     })();
     // ------------------------------------------------------------------------------------------
     function tagger(input, options) {
+        if (input.length === 0) {
+            return;
+        } else if (input.length === 1) {
+            input = Array.from(input).pop();
+        }
         if (input.length) {
             return Array.from(input).map(function(input) {
                 return new tagger(input, options);
