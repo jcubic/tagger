@@ -20,6 +20,7 @@ declare namespace Tagger {
         min_length: number;
     }
     type link = (name: string) => (string | false);
+    type filter = (name: string) => (string);
 }
 
 interface tagger_options {
@@ -31,6 +32,7 @@ interface tagger_options {
     completion?: Tagger.completion;
     link?: Tagger.link;
     placeholder?: string;
+    filter?: Tagger.filter;
 }
 
 interface tagger_instance {
