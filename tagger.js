@@ -3,7 +3,7 @@
  * |_   _|___ ___ ___ ___ ___
  *   | | | .'| . | . | -_|  _|
  *   |_| |__,|_  |_  |___|_|
- *           |___|___|   version 0.5.0
+ *           |___|___|   version 0.6.0
  *
  * Tagger - Zero dependency, Vanilla JavaScript Tag Editor
  *
@@ -161,6 +161,10 @@
                 this._build_completion(this._settings.completion.list);
             }
         },
+        _update_input: function () {
+          this._input.value = this._tags.join(',');
+          this._input.dispatchEvent(new Event('change', { bubbles: true }));
+        },
         // --------------------------------------------------------------------------------------
         _add_events: function() {
             var self = this;
@@ -192,7 +196,7 @@
                         var li = self._ul.querySelector('li:nth-last-child(2)');
                         self._ul.removeChild(li);
                         self._tags.pop();
-                        self._input.value = self._tags.join(',');
+                        self._update_input();
                     }
                     event.preventDefault();
                 } else if (event.keyCode === 32 && (event.ctrlKey || event.metaKey)) {
@@ -214,7 +218,7 @@
                         self._new_input_tag.value = '';
                     }
                 } else {
-                	var min = self._settings.completion.min_length;
+                    var min = self._settings.completion.min_length;
                     if (typeof self._settings.completion.list === 'function' && value.length >= min) {
                         self.complete(value);
                     }
@@ -318,7 +322,7 @@
             }
             this._new_tag(name);
             this._tags.push(name);
-            this._input.value = this._tags.join(',');
+            this._update_input();
             return true;
         },
         // --------------------------------------------------------------------------------------
@@ -340,7 +344,7 @@
             this._tags = this._tags.filter(function(tag) {
                 return name !== tag;
             });
-            this._input.value = this._tags.join(',');
+            this._update_input()
             if (remove_dom) {
                 var tags = Array.from(this._ul.querySelectorAll('.label'));
                 var re = new RegExp('^\s*' + escape_regex(name) + '\s*$');
