@@ -75,6 +75,8 @@ function tags_array(str) {
 export default App
 ```
 
+See demo in action on [CodePen](https://codepen.io/jcubic/pen/YzRdbmp?editors=0010).
+
 ## API
 
 ### methods:
