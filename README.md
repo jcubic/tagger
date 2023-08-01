@@ -41,35 +41,35 @@ Tagger can easily be used with ReactJS.
 import { useRef, useState, useEffect } from 'react'
 import tagger from '@jcubic/tagger'
 
-function App() {
-  const [tags, setTags] = useState(null)
-  const inputRef = useRef(null)
+const App = () => {
+    const [tags, setTags] = useState([]);
+    const inputRef = useRef(null);
 
-  // Get current tags
-  const getTags = () => {
-    setTags(inputRef.current.value)
-  }
+    useEffect(() => {
+        const taggerOptions = {
+            allow_spaces: true,
+        };
+        tagger(inputRef.current, taggerOptions);
+        onChange();
+    }, [inputRef]);
 
-  // Write the Tagger code inside a useEffect hook
-  // It will run when the component is initially rendered
-  useEffect(() => {
-    // Define the Tagger options
-    const taggerOptions = {
-      allow_spaces: true,
-    }
+    const onChange = () => {
+        setTags(tags_array(inputRef.current.value));
+    };
 
-    // Initialize Tagger
-    tagger(inputRef.current, taggerOptions)
-  }, [])
+    return (
+        <div className="app">
+            <input type="text" ref={inputRef} onChange={onChange} defaultValue="charles, louis, michel" />
+            <br/>
+            <ul>
+                {tags.map((tag, index) => <li key={`${tag}-${index}`}>{tag}</li>)}
+            </ul>
+        </div>
+    )
+}
 
-  return (
-    <div className='app'>
-      <input type='text' defaultValue='charles, louis, michel' ref={inputRef} />
-      <button onClick={getTags}>Get tags</button>
-
-      {tags && <pre>{tags}</pre>}
-    </div>
-  )
+function tags_array(str) {
+    return str.split(/\s*,\s*/);
 }
 
 export default App
