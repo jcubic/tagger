@@ -162,8 +162,12 @@
             }
         },
         _update_input: function () {
-          this._input.value = this._tags.join(',');
-          this._input.dispatchEvent(new Event('change', { bubbles: true }));
+          // ReactJS overwrite value setting on inputs, this is a workaround
+          // ref: https://stackoverflow.com/a/46012210/387194
+          var inputProto = window.HTMLInputElement.prototype;
+          var nativeInputValueSetter = Object.getOwnPropertyDescriptor(inputProto, 'value').set;
+          nativeInputValueSetter.call(this._input, this._tags.join(','));
+          this._input.dispatchEvent(new Event('input', { bubbles: true }));
         },
         // --------------------------------------------------------------------------------------
         _add_events: function() {
@@ -344,7 +348,7 @@
             this._tags = this._tags.filter(function(tag) {
                 return name !== tag;
             });
-            this._update_input()
+            this._update_input();
             if (remove_dom) {
                 var tags = Array.from(this._ul.querySelectorAll('.label'));
                 var re = new RegExp('^\s*' + escape_regex(name) + '\s*$');
