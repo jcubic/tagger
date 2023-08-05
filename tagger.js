@@ -121,6 +121,7 @@
             return '/tag/' + name;
         },
         filter: (name) => name,
+        additional_delimiters: []
     };
     // ------------------------------------------------------------------------------------------
     tagger.fn = tagger.prototype = {
@@ -189,6 +190,7 @@
             // ----------------------------------------------------------------------------------
             this._new_input_tag.addEventListener('keydown', function(event) {
                 if (event.keyCode === 13 || event.keyCode === 188 ||
+                    self._settings.additional_delimiters.includes(event.key) ||
                     (event.keyCode === 32 && !self._settings.allow_spaces)) { // enter || comma || space
                     if (self.add_tag(self._new_input_tag.value.trim())) {
                         self._new_input_tag.value = '';

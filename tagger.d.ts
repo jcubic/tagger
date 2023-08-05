@@ -21,8 +21,8 @@ declare namespace Tagger {
     }
     type link = (name: string) => (string | false);
     type filter = (name: string) => (string);
+    type additional_delimiters = Array<(";")>
 }
-
 interface tagger_options {
     wrap?: boolean;
     allow_duplicates?: boolean;
@@ -33,6 +33,7 @@ interface tagger_options {
     link?: Tagger.link;
     placeholder?: string;
     filter?: Tagger.filter;
+    additional_delimiters?: Tagger.additional_delimiters
 }
 
 interface tagger_instance {
