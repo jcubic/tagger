@@ -102,6 +102,12 @@ TypeScript definition file:
 
 [tagger.d.ts](https://github.com/jcubic/tagger/blob/master/tagger.d.ts)
 
+## Press
+* JavaScript Weekly
+  * [Issue #527](https://javascriptweekly.com/issues/527)
+  * [Issue #652](https://javascriptweekly.com/issues/652)
+* [Minimal Tagging Input In Pure JavaScript – Tagger](https://www.cssscript.com/tagging-input-tagger/)
+
 ## License
 
 Copyright (c) 2018-2023 [Jakub T. Jankiewicz](https://jcubic.pl/me)<br/>
