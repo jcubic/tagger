@@ -106,6 +106,7 @@ TypeScript definition file:
 * JavaScript Weekly
   * [Issue #527](https://javascriptweekly.com/issues/527)
   * [Issue #652](https://javascriptweekly.com/issues/652)
+* [Web Tools Weekly](https://webtoolsweekly.com/archives/issue-396/)
 * [Minimal Tagging Input In Pure JavaScript – Tagger](https://www.cssscript.com/tagging-input-tagger/)
 
 ## License
