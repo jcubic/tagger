@@ -69,7 +69,7 @@ const App = () => {
 }
 
 function tags_array(str) {
-    return str.split(/\s*,\s*/);
+    return str.split(/\s*,\s*/).filter(Boolean);
 }
 
 export default App
