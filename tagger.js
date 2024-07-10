@@ -365,7 +365,7 @@
         // --------------------------------------------------------------------------------------
         _remove_tag: function(close) {
             var li = close.closest('li');
-            var name = li.querySelector('.label').innerText;
+            var name = li.querySelector('.label').textContent;
             this._ul.removeChild(li);
             this.remove_tag(name, false);
         }
