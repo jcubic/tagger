@@ -1,3 +1,6 @@
+## 0.6.2
+* fix removing tags containing multiple consecutive spaces [#47](https://github.com/jcubic/tagger/pull/47). Thanks to [nuclear06](https://github.com/nuclear06)
+
 ## 0.6.1
 * fix triggering change event for ReactJS
 

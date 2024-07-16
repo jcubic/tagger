@@ -3,11 +3,11 @@
  |_   _|___ ___ ___ ___ ___
    | | | .'| . | . | -_|  _|
    |_| |__,|_  |_  |___|_|
-           |___|___|   version 0.6.1
+           |___|___|   version 0.6.2
 ```
 # [Tagger: Zero dependency, Vanilla JavaScript Tag Editor](https://github.com/jcubic/tagger)
 
-[![npm](https://img.shields.io/badge/npm-0.6.1-blue.svg)](https://www.npmjs.com/package/@jcubic/tagger)
+[![npm](https://img.shields.io/badge/npm-0.6.2-blue.svg)](https://www.npmjs.com/package/@jcubic/tagger)
 
 ![Tag Editor widget in JavaScript](https://raw.githubusercontent.com/jcubic/tagger/master/screenshot.png)
 
@@ -111,5 +111,5 @@ TypeScript definition file:
 
 ## License
 
-Copyright (c) 2018-2023 [Jakub T. Jankiewicz](https://jcubic.pl/me)<br/>
+Copyright (c) 2018-2024 [Jakub T. Jankiewicz](https://jcubic.pl/me)<br/>
 Released under the MIT license
