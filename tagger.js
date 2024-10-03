@@ -10,6 +10,9 @@
  * Copyright (c) 2018-2024 Jakub T. Jankiewicz <https://jcubic.pl/me>
  * Released under the MIT license
  */
+
+import keyMap from './keymap';
+
 /* global define, module, global */
 (function(root, factory, undefined) {
     if (typeof define === 'function' && define.amd) {
@@ -110,6 +113,7 @@
     tagger.defaults = {
         allow_duplicates: false,
         allow_spaces: true,
+        delimiter: ',',
         completion: {
             list: [],
             delay: 400,
@@ -188,8 +192,14 @@
             }
             // ----------------------------------------------------------------------------------
             this._new_input_tag.addEventListener('keydown', function(event) {
-                if (event.keyCode === 13 || event.keyCode === 188 ||
-                    (event.keyCode === 32 && !self._settings.allow_spaces)) { // enter || comma || space
+                if (
+                    event.keyCode === 13 ||
+                    event.keyCode ===
+                        (keyMap[self._settings.delimiter.toLowerCase()] ||
+                            188) ||
+                    (event.keyCode === 32 && !self._settings.allow_spaces)
+                ) {
+                    // enter || comma or delimiter || space
                     if (self.add_tag(self._new_input_tag.value.trim())) {
                         self._new_input_tag.value = '';
                     }
