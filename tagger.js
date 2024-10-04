@@ -10,9 +10,6 @@
  * Copyright (c) 2018-2024 Jakub T. Jankiewicz <https://jcubic.pl/me>
  * Released under the MIT license
  */
-
-import keyMap from './keymap';
-
 /* global define, module, global */
 (function(root, factory, undefined) {
     if (typeof define === 'function' && define.amd) {
@@ -193,18 +190,16 @@ import keyMap from './keymap';
             // ----------------------------------------------------------------------------------
             this._new_input_tag.addEventListener('keydown', function(event) {
                 if (
-                    event.keyCode === 13 ||
-                    event.keyCode ===
-                        (keyMap[self._settings.delimiter.toLowerCase()] ||
-                            188) ||
-                    (event.keyCode === 32 && !self._settings.allow_spaces)
+                    event.key === 'Enter' ||
+                    event.key === self._settings.delimiter ||
+                    (event.key === ' ' && !self._settings.allow_spaces)
                 ) {
-                    // enter || comma or delimiter || space
+                    // enter || delimiter (comma) || space
                     if (self.add_tag(self._new_input_tag.value.trim())) {
                         self._new_input_tag.value = '';
                     }
                     event.preventDefault();
-                } else if (event.keyCode === 8 && !self._new_input_tag.value) { // backspace
+                } else if (event.key === 'Backspace' && !self._new_input_tag.value) {
                     if (self._tags.length > 0) {
                         var li = self._ul.querySelector('li:nth-last-child(2)');
                         self._ul.removeChild(li);
@@ -212,13 +207,13 @@ import keyMap from './keymap';
                         self._update_input();
                     }
                     event.preventDefault();
-                } else if (event.keyCode === 32 && (event.ctrlKey || event.metaKey)) {
+                } else if (event.key === ' ' && (event.ctrlKey || event.metaKey)) {
                     if (typeof self._settings.completion.list === 'function') {
                         self.complete(self._new_input_tag.value);
                     }
                     self._toggle_completion(true);
                     event.preventDefault();
-                } else if (self._tag_limit() && event.keyCode !== 9) { // tab
+                } else if (self._tag_limit() && event.key !== 'Tab') {
                     event.preventDefault();
                 }
             });
@@ -383,3 +378,5 @@ import keyMap from './keymap';
     // ------------------------------------------------------------------------------------------
     return tagger;
 });
+
+export default tagger;
