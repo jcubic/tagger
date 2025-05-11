@@ -11,6 +11,8 @@
 
 ![Tag Editor widget in JavaScript](https://raw.githubusercontent.com/jcubic/tagger/master/screenshot.png)
 
+Tagger was inspired by StackOverflow tag editor. It supposed to be a part of similar QA website that was never created.
+
 [Online Demo](https://codepen.io/jcubic/pen/YbYpqO)
 
 ## Installation
